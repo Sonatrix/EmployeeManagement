@@ -33,14 +33,9 @@
 <body>
 
     <div class="fluid-container">
-        <div id='header' class="row">
-            {% include "autotriage/navigation.html" %}
-        </div>
-
-        <div id='body' class="row">
-            <div class="container">
-                {% block app_body %}{% endblock %}
-            </div>
+        {% include "autotriage/navigation.html" %}
+        <div class="container-fluid-md">
+            {% block app_body %}{% endblock %}
         </div>
     </div>
     <script src="{% static 'autotriage/assets/plugins/jquery-navgoco/jquery.navgoco.js' %}"></script>
