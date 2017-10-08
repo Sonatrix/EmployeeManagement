@@ -1,0 +1,67 @@
+{% load static from staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>{% block app_title %}Auto Triage{% endblock %}</title>
+    <script src="{% static 'autotriage/js/jquery-3.2.1.js' %}"></script>
+    <script src="{% static 'autotriage/bootstrap/js/bootstrap.min.js' %}"></script>
+        <!-- Google fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700" rel="stylesheet">
+
+     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <link rel="stylesheet" href="{% static 'autotriage/bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'autotriage/css/iriy-admin.min.css' %}">
+    <link rel="stylesheet" href="{% static 'autotriage/demo/css/demo.css' %}">
+    <link rel="stylesheet" href="{% static 'autotriage/assets/font-awesome/css/font-awesome.css' %}">
+
+    <link rel="stylesheet" href="{% static 'autotriage/assets/plugins/jquery-jvectormap/jquery-jvectormap-1.2.2.css' %}"/>
+    <link rel="stylesheet" href="{% static 'autotriage/css/plugins/rickshaw.min.css' %}">
+    <link rel="stylesheet" href="{% static 'autotriage/css/plugins/morris.min.css' %}">
+     {% block app_head %}{% endblock %}
+
+</head>
+
+<body>
+
+    <div class="fluid-container">
+        <div id='header' class="row">
+            {% include "autotriage/navigation.html" %}
+        </div>
+
+        <div id='body' class="row">
+            <div class="container">
+                {% block app_body %}{% endblock %}
+            </div>
+        </div>
+    </div>
+    <script src="{% static 'autotriage/assets/plugins/jquery-navgoco/jquery.navgoco.js' %}"></script>
+    <script src="{% static 'autotriage/js/main.js' %}"></script>
+
+    <!--[if lt IE 9]>
+    <script src="assets/plugins/flot/excanvas.min.js"></script>
+    <![endif]-->
+    <script src="{% static 'autotriage/assets/plugins/jquery-sparkline/jquery.sparkline.js' %}"></script>
+
+    <script src="{% static 'autotriage/assets/plugins/jquery-jvectormap/jquery-jvectormap-1.2.2.min.js' %}"></script>
+    <script src="{% static 'autotriage/assets/plugins/jquery-jvectormap/maps/world_mill_en.js' %}"></script>
+
+    <!--[if gte IE 9]>-->
+    <script src="{% static 'autotriage/assets/plugins/rickshaw/js/vendor/d3.v3.js' %}"></script>
+    <script src="{% static 'autotriage/assets/plugins/rickshaw/rickshaw.min.js' %}"></script>
+    <!--<![endif]-->
+
+    <script src="{% static 'autotriage/assets/plugins/flot/jquery.flot.js' %}"></script>
+    <script src="{% static 'autotriage/assets/plugins/flot/jquery.flot.resize.js' %}"></script>
+    <script src="{% static 'autotriage/assets/plugins/raphael/raphael-min.js' %}"></script>
+    <script src="{% static 'autotriage/assets/plugins/morris/morris.min.js' %}"></script>
+</body>
+</html>
