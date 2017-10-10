@@ -5,81 +5,27 @@
 {% block app_body %}
 
     <div class="row">
-        <div class="col-sm-6 col-md-4 col-lg-3">
-            <div class="panel panel-default panel-member">
-                <div class="panel-body">
-                    <a href="pages-profile.html">
-                        <div class="text-center">
-                            <img src="{% static 'autotriage/demo/images/avatars/1.jpg' %}" class="img-circle" alt="image">
+    {% if employees %}
+        {% for employee in employees%}
+            <div class="col-sm-6 col-md-4 col-lg-3">
+                <div class="panel panel-default panel-member">
+                    <div class="panel-body">
+                        <a href="/employee/{{employee.id}}">
+                            <div class="text-center">
+                                <img src="{% static 'autotriage/images/default.png' %}" class="img-circle" alt="image">
 
-                            <h4 class="thin">
-                                Marlon Brice
-                            </h4>
-                        </div>
-                    </a>
+                                <h4 class="thin">
+                                    {{employee.full_name}}
+                                </h4>
+                            </div>
+                        </a>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="col-sm-6 col-md-4 col-lg-3">
-            <div class="panel panel-default panel-member">
-                <div class="panel-body">
-                    <a href="pages-profile.html">
-                        <div class="text-center">
-                            <img src="{% static 'autotriage/demo/images/avatars/2.jpg' %}" class="img-circle" alt="image">
-
-                            <h4 class="thin">
-                                Ernest Kerry
-                            </h4>
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-6 col-md-4 col-lg-3">
-            <div class="panel panel-default panel-member">
-                <div class="panel-body">
-                    <a href="pages-profile.html">
-                        <div class="text-center">
-                            <img src="{% static 'autotriage/demo/images/avatars/3.jpg' %}" class="img-circle" alt="image">
-
-                            <h4 class="thin">
-                                Brice Sheldon
-                            </h4>
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-6 col-md-4 col-lg-3">
-            <div class="panel panel-default panel-member">
-                <div class="panel-body">
-                    <a href="pages-profile.html">
-                        <div class="text-center">
-                            <img src="{% static 'autotriage/demo/images/avatars/4.jpg' %}" class="img-circle" alt="image">
-
-                            <h4 class="thin">
-                                Jemmy Emory
-                            </h4>
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-6 col-md-4 col-lg-3">
-            <div class="panel panel-default panel-member">
-                <div class="panel-body">
-                    <a href="pages-profile.html">
-                        <div class="text-center">
-                            <img src="{% static 'autotriage/demo/images/avatars/5.jpg' %}" class="img-circle" alt="image">
-
-                            <h4 class="thin">
-                                Timmy Radclyffe
-                            </h4>
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </div>
+        {% endfor %}
+    {% else %}
+        <div>No Employees are present</div>
+    {% endif %}
     </div>
 
 {% endblock %}

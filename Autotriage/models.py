@@ -8,6 +8,9 @@ class Employee(models.Model):
     insert_date = models.DateField(auto_now=True)
     inserted_by = models.BigIntegerField()
 
+    # def __str__(self):
+    #     return self.full_name
+
 class CompanyMaster(models.Model):
     pid = models.IntegerField(default=0)
     company_name = models.CharField(max_length=255)
@@ -22,6 +25,9 @@ class CompanyMaster(models.Model):
     added_date = models.DateField(auto_now=True)
     added_by = models.IntegerField()
     deleted = models.IntegerField()
+
+    def __str__(self):
+        return self.company_name
 
 class CompanyServer(models.Model):
     company_id = models.IntegerField()

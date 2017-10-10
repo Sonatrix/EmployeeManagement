@@ -1,0 +1,22 @@
+{% extends "autotriage/base.html" %}
+{% load static from staticfiles %}
+{% block app_title %}Edit Employee{% endblock %}
+
+{% block app_body %}
+<div class="col-xs-6">
+<div class="panel panel-default">
+
+<div class="panel-body">
+    <form method='post' action='/employee_edit/{{employee_id}}'>
+    <fieldset>
+        {{ form.as_p }}
+        <div class='buttons form-group'>
+            <input type='submit' class="btn btn-primary" value="Save Changes" />
+        </div>
+    </fieldset>
+
+{% csrf_token %}</form>
+    </div>
+  </div>
+</div>
+{% endblock %}
