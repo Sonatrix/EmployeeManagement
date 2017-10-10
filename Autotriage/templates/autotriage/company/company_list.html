@@ -1,0 +1,33 @@
+{% extends "autotriage/base.html" %}
+{% load static from staticfiles %}
+{% block app_title %}Company{% endblock %}
+
+{% block app_body %}
+
+    <div class="row">
+    <a href="/company_add" class="btn btn-primary">Add New Company</a>
+    {% if companies %}
+        {% for company in companies%}
+            <div class="col-sm-6 col-md-4 col-lg-3">
+                <div class="panel panel-default panel-member">
+                    <div class="panel-body">
+                        <a href="/company/{{company.id}}">
+                            <div class="text-center">
+                                <img src="{% static 'autotriage/images/default_company.png' %}" class="img-circle" alt="image">
+
+                                <h4 class="thin">
+                                    {{company.company_name}}
+                                </h4>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    {% else %}
+        <div>No Companies are listed</div>
+          <a href="/company_add" class="btn btn-primary">Add New Company</a>
+    {% endif %}
+    </div>
+
+{% endblock %}

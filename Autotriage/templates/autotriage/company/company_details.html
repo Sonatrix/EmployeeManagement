@@ -1,0 +1,65 @@
+{% extends "autotriage/base.html" %}
+{% load static from staticfiles %}
+{% block app_title %}Company Details{% endblock %}
+
+{% block app_body %}
+
+    <div class="row">
+    {% if company %}
+            <div class="col-md-12 col-lg-12">
+            <div class="panel panel-default panel-profile-details">
+                <div class="panel-body">
+                    <div class="col-sm-5 text-center">
+                        <img alt="image" class="img-circle img-profile" src="{% static 'autotriage/images/default_company.png' %}">
+                    </div>
+                    <div class="col-sm-7 profile-details">
+                        <h3>{{company.company_name}}</h3>
+                        <p>
+                            <a href="javascript:{{company.email}};" class="text-gray text-no-decoration">
+                                <i class="fa fa-fw fa-envelope"></i>
+                                Send Email
+                            </a>
+                        </p>
+                        <p>
+                            <a href="javascript:{{company.phone}};" class="text-gray text-no-decoration">
+                                <i class="fa fa-fw fa-phone"></i>
+                                Call {{company.company_name}}
+                            </a>
+                        </p>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <div class="col-sm-5">
+                        <dl>
+                            <dt>Email</dt>
+                            <dd>{{company.email}}</dd>
+                        </dl>
+                    </div>
+                    <div class="col-sm-7">
+                        <dl class="margin-sm-bottom">
+                            <dt>Address</dt>
+                            <dd>{{company.company_address}}</dd>
+                        </dl>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <div class="col-sm-3">
+                         <a href="/company_edit/{{company.id}}" class="btn btn-primary">Edit</a>
+                    </div>
+                    <div class="col-sm-3">
+                        <a href="/company_delete/{{company.id}}" class="btn btn-primary">Delete</a>
+                    </div>
+                    <div class="col-sm-3">
+                        <a href="/branch_add" class="btn btn-primary">Add Branch</a>
+                    </div>
+                    <div class="col-sm-3">
+                        <a href="/branch" class="btn btn-primary">Show Branchs</a>
+                    </div>
+                </div>
+            </div>
+    {% else %}
+        <div>No Employee Details are present</div>
+    {% endif %}
+    </div>
+
+{% endblock %}

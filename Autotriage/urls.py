@@ -1,6 +1,7 @@
 from django.conf.urls import url
 import Autotriage.views.views as publicViews
 import Autotriage.views.employee as employeeViews
+import Autotriage.views.company as companyViews
 app_name = 'autotriage'
 
 urlpatterns = [
@@ -18,3 +19,22 @@ urlpatterns += [
     url(r'^employee_edit/(?P<employee_id>[0-9])$',
         employeeViews.editEmployee, name='editEmployee'),
 ]
+
+
+#company related views
+urlpatterns += [
+    url(r'^company_list/$', companyViews.companyList, name='companyList'),
+    url(r'^company_add$', companyViews.addCompany, name='companyAdd'),
+    url(r'^company/(?P<pid>[0-9])/$',
+        companyViews.companyDetail, name='companyDetail'),
+    url(r'^company_delete/(?P<pid>[0-9])/$',
+        companyViews.deleteCompany, name='deleteCompany'),
+    url(r'^company_edit/(?P<pid>[0-9])$',
+        companyViews.editCompany, name='editCompany'),
+]
+
+#branch
+
+
+
+#contacts

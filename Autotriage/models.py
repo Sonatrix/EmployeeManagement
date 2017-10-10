@@ -11,7 +11,7 @@ class Employee(models.Model):
     # def __str__(self):
     #     return self.full_name
 
-class CompanyMaster(models.Model):
+class Company(models.Model):
     pid = models.IntegerField(default=0)
     company_name = models.CharField(max_length=255)
     company_address = models.CharField(max_length=500)
@@ -24,7 +24,7 @@ class CompanyMaster(models.Model):
     is_contact = models.BooleanField()
     added_date = models.DateField(auto_now=True)
     added_by = models.IntegerField()
-    deleted = models.IntegerField()
+    deleted = models.IntegerField(default=0)
 
     def __str__(self):
         return self.company_name
