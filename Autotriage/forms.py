@@ -7,7 +7,7 @@ from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth import get_user_model
 from django.utils import timezone
 
-from Autotriage.models import Employee, Company
+from Autotriage.models import Employee, Company, CompanyServer
 
 class AddEmployeeForm(forms.ModelForm):
     
@@ -20,5 +20,12 @@ class AddCompanyForm(forms.ModelForm):
 
     class Meta:
         model = Company
+        exclude = ('deleted',)
+
+class AddServerForm(forms.ModelForm):
+    
+    class Meta:
+        model = CompanyServer
+        include = ('server_os', 'username', 'password')
         exclude = ('deleted',)
 

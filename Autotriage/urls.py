@@ -2,6 +2,7 @@ from django.conf.urls import url
 import Autotriage.views.views as publicViews
 import Autotriage.views.employee as employeeViews
 import Autotriage.views.company as companyViews
+import Autotriage.views.server as serverViews
 app_name = 'autotriage'
 
 urlpatterns = [
@@ -33,8 +34,19 @@ urlpatterns += [
         companyViews.editCompany, name='editCompany'),
 ]
 
-#branch
-
+#server
+urlpatterns += [
+    url(r'^server_list/(?P<company_id>[0-9])/(?P<is_branch>[0-1])/$',
+        serverViews.serverList, name='serverList'),
+    url(r'^server_add/(?P<company_id>[0-9])/(?P<is_branch>[0-1])$',
+        serverViews.addServer, name='serverAdd'),
+    url(r'^server/(?P<company_id>[0-9])/(?P<is_branch>[0-1])/(?P<server_id>[0-9])/$',
+        serverViews.serverDetail, name='serverDetail'),
+    url(r'^server_delete/(?P<company_id>[0-9])/(?P<is_branch>[0-1])/(?P<server_id>[0-9])/$',
+        serverViews.deleteServer, name='deleteServer'),
+    url(r'^server_edit/(?P<company_id>[0-9])/(?P<is_branch>[0-1])/(?P<server_id>[0-9])$',
+        serverViews.editServer, name='editServer'),
+]
 
 
 #contacts

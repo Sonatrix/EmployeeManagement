@@ -1,0 +1,59 @@
+{% extends "autotriage/base.html" %}
+{% load static from staticfiles %}
+{% block app_title %}Server Details{% endblock %}
+
+{% block app_body %}
+
+    <div class="row">
+    {% if server %}
+            <div class="col-md-12 col-lg-12">
+            <div class="panel panel-default panel-profile-details">
+                <div class="panel-body">
+                    <div class="col-sm-5 text-center">
+                        <img alt="image" class="img-circle img-profile" src="{% static 'autotriage/images/default_company.png' %}">
+                    </div>
+                    <div class="col-sm-7 profile-details">
+                        <h3>{{server.server_os}}</h3>
+                        <p>
+                            <a href="javascript:{{server.alert_sender_email1}};" class="text-gray text-no-decoration">
+                                <i class="fa fa-fw fa-envelope"></i>
+                                Send Email
+                            </a>
+                        </p>
+                        <p>
+                            <a href="javascript;" class="text-gray text-no-decoration">
+                                <i class="fa fa-fw fa-phone"></i>
+                                 {{server.server_name}}
+                            </a>
+                        </p>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <div class="col-sm-5">
+                        <dl>
+                            <dt>Email</dt>
+                            <dd>{{server.alert_sender_email1}}</dd>
+                        </dl>
+                    </div>
+                    <div class="col-sm-7">
+                        <dl class="margin-sm-bottom">
+                            <dt>Public IP</dt>
+                            <dd>{{server.public_ip}}</dd>
+                        </dl>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <div class="col-sm-3">
+                         <a href="/server_edit/{{server.id}}" class="btn btn-primary">Edit</a>
+                    </div>
+                    <div class="col-sm-3">
+                        <a href="/server_delete/{{server.id}}" class="btn btn-primary">Delete</a>
+                    </div>
+                </div>
+            </div>
+    {% else %}
+        <div>No Server Details are present</div>
+    {% endif %}
+    </div>
+
+{% endblock %}
