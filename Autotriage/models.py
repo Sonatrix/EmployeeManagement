@@ -7,7 +7,9 @@ class Employee(models.Model):
     deleted = models.IntegerField(default=0)
     insert_date = models.DateField(auto_now=True)
     inserted_by = models.BigIntegerField()
-
+    allow_login = models.BooleanField(default=False)
+    username = models.CharField(max_length=20,default='username')
+    password = models.CharField(max_length=20, default='12345')
     # def __str__(self):
     #     return self.full_name
 
