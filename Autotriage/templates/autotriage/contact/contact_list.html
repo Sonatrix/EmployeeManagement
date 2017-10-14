@@ -1,22 +1,22 @@
 {% extends "autotriage/base.html" %}
 {% load static from staticfiles %}
-{% block app_title %}Branch{% endblock %}
+{% block app_title %}Contact{% endblock %}
 
 {% block app_body %}
  <div class="row">
     
-    {% if branches %}
-    <a href="/company/{{company_id}}/add_branch" class="btn btn-primary">Add New Branch</a>
-        {% for branch in branches%}
+    {% if contacts %}
+    <a href="/contact/{{branch_id}}/add" class="btn btn-primary">Add New Contact</a>
+        {% for contact in contacts%}
             <div class="col-sm-6 col-md-4 col-lg-3">
                 <div class="panel panel-default panel-member">
                     <div class="panel-body">
-                        <a href="/company/{{company_id}}/detail/{{branch.id}}/">
+                        <a href="/contact/detail/{{contact.id}}/">
                             <div class="text-center">
                                 <img src="{% static 'autotriage/images/default_company.png' %}" class="img-circle" alt="image">
 
                                 <h4 class="thin">
-                                    {{branch.name}}
+                                    {{contact.name}}
                                 </h4>
                             </div>
                         </a>
@@ -25,8 +25,8 @@
             </div>
         {% endfor %}
     {% else %}
-        <div>No Branches are listed</div>
-          <a href="/company/{{company_id}}/add_branch" class="btn btn-primary">Add New Branch</a>
+        <div>No Contacts are listed</div>
+          <a href="/contact/{{branch_id}}/add" class="btn btn-primary">Add New Contact</a>
     {% endif %}
     </div>
 {% endblock %}

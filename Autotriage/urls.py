@@ -3,6 +3,8 @@ import Autotriage.views.views as publicViews
 import Autotriage.views.employee as employeeViews
 import Autotriage.views.company as companyViews
 import Autotriage.views.server as serverViews
+import Autotriage.views.branch as branchViews
+import Autotriage.views.contact as contactViews
 from django.contrib.auth import views as auth_views
 
 app_name = 'autotriage'
@@ -36,6 +38,20 @@ urlpatterns += [
         companyViews.editCompany, name='editCompany'),
 ]
 
+#branch url
+urlpatterns += [
+    url(r'^company/branch/(?P<company_id>[0-9])/$',
+        branchViews.branchList, name='branchList'),
+    url(r'^company/(?P<company_id>[0-9])/add_branch$',
+        branchViews.addBranch, name='branchAdd'),
+    url(r'^company/(?P<company_id>[0-9])/detail/(?P<branch_id>[0-9])/$',
+        branchViews.branchDetail, name='branchDetail'),
+    url(r'^company/(?P<company_id>[0-9])/delete/(?P<branch_id>[0-9])/$',
+        branchViews.deleteBranch, name='deleteBranch'),
+    url(r'^company/(?P<company_id>[0-9])/edit/(?P<branch_id>[0-9])$',
+        branchViews.editBranch, name='editBranch'),
+]
+
 #server
 urlpatterns += [
     url(r'^server_list/(?P<company_id>[0-9])/(?P<is_branch>[0-1])/$',
@@ -52,7 +68,18 @@ urlpatterns += [
 
 
 #contacts
-
+urlpatterns += [
+    url(r'^contact/(?P<branch_id>[0-9])/$',
+        contactViews.contactList, name='contactList'),
+    url(r'^contact/(?P<branch_id>[0-9])/add$',
+        contactViews.addContact, name='contactAdd'),
+    url(r'^contact/detail/(?P<contact_id>[0-9])/$',
+        contactViews.contactDetail, name='contactDetail'),
+    url(r'^contact/(?P<branch_id>[0-9])/delete/(?P<contact_id>[0-9])/$',
+        contactViews.deleteContact, name='deleteContact'),
+    url(r'^contact/(?P<contact_id>[0-9])/edit$',
+        contactViews.editContact, name='editContact'),
+]
 
 #login views
 urlpatterns += [

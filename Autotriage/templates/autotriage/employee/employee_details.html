@@ -13,7 +13,7 @@
                         <img alt="image" class="img-circle img-profile" src="{% static 'autotriage/images/default.png' %}">
                     </div>
                     <div class="col-sm-7 profile-details">
-                        <h3>{{employee.full_name}}</h3>
+                        <h3>{{employee.first_name}}</h3>
                         <h4 class="thin">{{employee.designation}}</h4>
                         <p>
                             <a href="javascript:;" class="text-gray text-no-decoration">
@@ -24,7 +24,7 @@
                         <p>
                             <a href="javascript:{{employee.email_id}};" class="text-gray text-no-decoration">
                                 <i class="fa fa-fw fa-phone"></i>
-                                Call {{employee.full_name}}
+                                Call {{employee.first_name}} {{employee.last_name}} 
                             </a>
                         </p>
                     </div>
@@ -33,7 +33,7 @@
                     <div class="col-sm-5">
                         <dl>
                             <dt>Email</dt>
-                            <dd>{{employee.email_id}}</dd>
+                            <dd>{{employee.email}}</dd>
                         </dl>
                     </div>
                     <div class="col-sm-7">
