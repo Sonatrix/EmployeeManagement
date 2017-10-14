@@ -1,17 +1,14 @@
 from django.db import models
+from django.contrib.auth.models import AbstractUser
 
-class Employee(models.Model):
-    full_name = models.CharField(max_length=100)
+
+class Employee(AbstractUser):
     designation = models.CharField(max_length=100)
-    email_id = models.EmailField(max_length=255)
-    deleted = models.IntegerField(default=0)
-    insert_date = models.DateField(auto_now=True)
-    inserted_by = models.BigIntegerField()
-    allow_login = models.BooleanField(default=False)
-    username = models.CharField(max_length=20,default='username')
-    password = models.CharField(max_length=20, default='12345')
-    # def __str__(self):
-    #     return self.full_name
+    inserted_by = models.BigIntegerField(blank=True, null=True)
+    profile_pic = models.ImageField(upload_to='profiles/', null=True, blank=True)
+
+    def __str__(self):
+        return self.designation
 
 class Company(models.Model):
     pid = models.IntegerField(default=0)

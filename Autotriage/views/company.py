@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.core.exceptions import ObjectDoesNotExist
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect, HttpResponse
+from django.contrib.auth.decorators import login_required
 from Autotriage.forms import AddCompanyForm
 from Autotriage.models import Company
 
@@ -15,7 +16,7 @@ def companyList(request):
                   }
                   )
 
-
+@login_required
 def addCompany(request):
      # if this is a POST request we need to process the form data
     if request.method == 'POST':
@@ -38,7 +39,7 @@ def companyDetail(request, pid):
     company = Company.objects.get(id=pid)
     return render(request, 'autotriage/company/company_details.html', {'company': company})
 
-
+@login_required
 def deleteCompany(request, pid):
 
     company = Company.objects.get(id=pid)
@@ -47,6 +48,7 @@ def deleteCompany(request, pid):
     return HttpResponseRedirect('/company_list/')
 
 
+@login_required
 def editCompany(request, pid):
      # if this is a POST request we need to process the form data
     company = Company.objects.get(id=pid)

@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.core.exceptions import ObjectDoesNotExist
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect, HttpResponse
+from django.contrib.auth.decorators import login_required
 from Autotriage.forms import AddEmployeeForm
 from Autotriage.models import Employee
 
@@ -14,6 +15,8 @@ def employeeList(request):
                 }
             )
 
+
+@login_required
 def addEmployee(request):
      # if this is a POST request we need to process the form data
     if request.method == 'POST':
@@ -30,11 +33,15 @@ def addEmployee(request):
 
     return render(request, 'autotriage/employee/add_employee.html', {'form': form})
 
+
+@login_required
 def employeeDetail(request, employee_id):
     
     employee = Employee.objects.get(id=employee_id)
     return render(request, 'autotriage/employee/employee_details.html', {'employee': employee})
 
+
+@login_required
 def deleteEmployee(request, employee_id):
     
     employee = Employee.objects.get(id=employee_id)
@@ -43,6 +50,7 @@ def deleteEmployee(request, employee_id):
     return HttpResponseRedirect('/employee_list/')
 
 
+@login_required
 def editEmployee(request, employee_id):
      # if this is a POST request we need to process the form data
     employee = Employee.objects.get(id=employee_id)

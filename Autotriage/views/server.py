@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.core.exceptions import ObjectDoesNotExist
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect, HttpResponse
+from django.contrib.auth.decorators import login_required
 from Autotriage.forms import AddServerForm
 from Autotriage.models import CompanyServer
 
@@ -16,6 +17,7 @@ def serverList(request):
                   )
 
 
+@login_required
 def addServer(request):
      # if this is a POST request we need to process the form data
     if request.method == 'POST':
@@ -39,6 +41,7 @@ def serverDetail(request, pid):
     return render(request, 'autotriage/server/server_details.html', {'server': server})
 
 
+@login_required
 def deleteServer(request, pid):
 
     server = CompanyServer.objects.get(id=pid)
@@ -47,6 +50,7 @@ def deleteServer(request, pid):
     return HttpResponseRedirect('/server_list/')
 
 
+@login_required
 def editServer(request, pid):
      # if this is a POST request we need to process the form data
     server = CompanyServer.objects.get(id=pid)

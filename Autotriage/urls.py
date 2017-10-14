@@ -3,6 +3,8 @@ import Autotriage.views.views as publicViews
 import Autotriage.views.employee as employeeViews
 import Autotriage.views.company as companyViews
 import Autotriage.views.server as serverViews
+from django.contrib.auth import views as auth_views
+
 app_name = 'autotriage'
 
 urlpatterns = [
@@ -50,3 +52,10 @@ urlpatterns += [
 
 
 #contacts
+
+
+#login views
+urlpatterns += [
+    url(r'^login/$', auth_views.login, {'template_name': 'autotriage/registration/login.html'}, name='login'),
+    url(r'^logout/$', auth_views.logout, {'template_name': 'autotriage/registration/logged_out.html'}, name='logout'),
+]

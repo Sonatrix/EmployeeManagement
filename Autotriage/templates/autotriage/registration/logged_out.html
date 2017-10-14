@@ -1,7 +1,7 @@
-{% extends "autotriage/public_base.html" %}{% load i18n %}
-{% block helpdesk_title %}{% trans "Logged Out" %}{% endblock %}
+{% extends "autotriage/base.html" %}
+{% block app_title %}Logged Out{% endblock %}
 
-{% block helpdesk_body %}{% blocktrans %}
+{% block app_body %}
 
     <div class="col-md-4 col-md-offset-4">
         <div class="alert alert-success">
@@ -10,4 +10,4 @@
         </div>
     </div>
 
-{% endblocktrans %}{% endblock %}
+{% endblock %}
