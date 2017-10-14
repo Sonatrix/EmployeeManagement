@@ -54,15 +54,15 @@ urlpatterns += [
 
 #server
 urlpatterns += [
-    url(r'^server_list/(?P<company_id>[0-9])/(?P<is_branch>[0-1])/$',
+    url(r'^server_list/(?P<branch_id>[0-9])/$',
         serverViews.serverList, name='serverList'),
-    url(r'^server_add/(?P<company_id>[0-9])/(?P<is_branch>[0-1])$',
+    url(r'^server/(?P<branch_id>[0-9])/add$',
         serverViews.addServer, name='serverAdd'),
-    url(r'^server/(?P<company_id>[0-9])/(?P<is_branch>[0-1])/(?P<server_id>[0-9])/$',
+    url(r'^server/(?P<branch_id>[0-9])/detail/(?P<server_id>[0-9])/$',
         serverViews.serverDetail, name='serverDetail'),
-    url(r'^server_delete/(?P<company_id>[0-9])/(?P<is_branch>[0-1])/(?P<server_id>[0-9])/$',
+    url(r'^server/(?P<branch_id>[0-9])/delete/(?P<server_id>[0-9])/$',
         serverViews.deleteServer, name='deleteServer'),
-    url(r'^server_edit/(?P<company_id>[0-9])/(?P<is_branch>[0-1])/(?P<server_id>[0-9])$',
+    url(r'^server/(?P<branch_id>[0-9])/edit/(?P<server_id>[0-9])$',
         serverViews.editServer, name='editServer'),
 ]
 

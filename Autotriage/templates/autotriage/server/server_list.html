@@ -5,13 +5,14 @@
 {% block app_body %}
 
     <div class="row">
-    <a href="/server_add" class="btn btn-primary">Add New Server</a>
+    
     {% if servers %}
+    <a href="/server_add/{{branch_id}}/add" class="btn btn-primary">Add New Server</a>
         {% for server in servers%}
             <div class="col-sm-6 col-md-4 col-lg-3">
                 <div class="panel panel-default panel-member">
                     <div class="panel-body">
-                        <a href="/server/{{server.id}}">
+                        <a href="/server/{{branch_id}}/detail/{{server.id}}/">
                             <div class="text-center">
                                 <h4 class="thin">
                                     {{server.server_name}}
@@ -24,7 +25,7 @@
         {% endfor %}
     {% else %}
         <div>No servers are listed</div>
-          <a href="/server_add" class="btn btn-primary">Add New Server</a>
+          <a href="/server_add/{{branch_id}}/add" class="btn btn-primary">Add New Server</a>
     {% endif %}
     </div>
 

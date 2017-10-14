@@ -7,18 +7,19 @@ from Autotriage.forms import AddServerForm
 from Autotriage.models import CompanyServer
 
 
-def serverList(request):
-    servers = CompanyServer.objects.all()
+def serverList(request, branch_id):
+    servers = CompanyServer.objects.filter(branch_id=branch_id)
     return render(request,
                   'autotriage/server/server_list.html',
                   {
-                      'servers': servers
+                      'servers': servers,
+                      'branch_id': branch_id
                   }
                   )
 
 
 @login_required
-def addServer(request):
+def addServer(request, branch_id):
      # if this is a POST request we need to process the form data
     if request.method == 'POST':
         # create a form instance and populate it with data from the request:
@@ -26,18 +27,18 @@ def addServer(request):
         # check whether it's valid:
         if form.is_valid():
             form.save()
-            return HttpResponseRedirect('/server_list/')
+            return HttpResponseRedirect('/server_list/' + str(branch_id))
 
     # if a GET (or any other method) we'll create a blank form
     else:
         form = AddServerForm()
 
-    return render(request, 'autotriage/server/add_server.html', {'form': form})
+    return render(request, 'autotriage/server/add_server.html', {'form': form, 'branch_id': branch_id})
 
 
-def serverDetail(request, pid):
+def serverDetail(request, server_id):
 
-    server = CompanyServer.objects.get(id=pid)
+    server = CompanyServer.objects.get(id=server_id)
     return render(request, 'autotriage/server/server_details.html', {'server': server})
 
 

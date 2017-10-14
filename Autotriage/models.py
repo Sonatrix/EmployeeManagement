@@ -28,24 +28,6 @@ class Company(models.Model):
     def __str__(self):
         return self.company_name
 
-class CompanyServer(models.Model):
-    company_id = models.IntegerField()
-    server_os = models.CharField(max_length=500)
-    username = models.CharField(max_length=500)
-    password = models.CharField(max_length=500)
-    server_name = models.CharField(max_length=255)
-    public_ip = models.CharField(max_length=100)
-    private_ip = models.CharField(max_length=100)
-    alert_sender_email1 = models.EmailField(max_length=100)
-    alert_sender_email2 = models.EmailField(max_length=100, blank=True)
-    alert_sender_email3 = models.EmailField(max_length=100, blank=True)
-    escalate_to_email1 = models.EmailField(max_length=100)
-    escalate_to_email2 = models.EmailField(max_length=100, blank=True)
-    added_date = models.DateField(auto_now=True)
-    added_by = models.IntegerField()
-    deleted = models.IntegerField()
-
-
 class Branch(models.Model):
     pid = models.IntegerField(default=1)
     company = models.ForeignKey(Company)
@@ -74,6 +56,24 @@ class Contact(models.Model):
         return self.name
 
     
+class CompanyServer(models.Model):
+    company_id = models.IntegerField()
+    server_os = models.CharField(max_length=500)
+    username = models.CharField(max_length=500)
+    branch = models.ForeignKey(Branch)
+    password = models.CharField(max_length=500)
+    server_name = models.CharField(max_length=255)
+    public_ip = models.CharField(max_length=100)
+    private_ip = models.CharField(max_length=100)
+    alert_sender_email1 = models.EmailField(max_length=100)
+    alert_sender_email2 = models.EmailField(max_length=100, blank=True)
+    alert_sender_email3 = models.EmailField(max_length=100, blank=True)
+    escalate_to_email1 = models.EmailField(max_length=100)
+    escalate_to_email2 = models.EmailField(max_length=100, blank=True)
+    added_date = models.DateField(auto_now=True)
+    added_by = models.IntegerField()
+    deleted = models.IntegerField()
+
 
 
 
