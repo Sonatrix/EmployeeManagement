@@ -6,7 +6,7 @@ class Employee(AbstractUser):
     designation = models.CharField(max_length=100)
     inserted_by = models.BigIntegerField(blank=True, null=True)
     profile_pic = models.ImageField(
-        upload_to='profiles/%Y/%m/%d', null=True, blank=True)
+        upload_to='profiles/', null=True, blank=True)
 
     def __str__(self):
         return self.designation
