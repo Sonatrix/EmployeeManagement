@@ -1,0 +1,35 @@
+{% extends "autotriage/base.html" %}
+{% load static from staticfiles %}
+{% block app_title %}Email Details{% endblock %}
+{% block breadcrumb %}
+    <ol class="breadcrumb">
+        <li><a href=";">Email Management</a></li>
+        <li><a href="/email">Email</a></li>
+        <li class='active'><a href=";">Detail</a></li>
+    </ol>
+{% endblock %}
+{% block app_body %}
+
+<div class="row">
+{% if email %}
+        <div class="col-md-12 col-lg-12">
+        <div class="panel panel-default panel-profile-details">
+            <div class="panel-body">
+               
+            </div>
+            
+            <div class="panel-body">
+                <div class="col-sm-3">
+                    <a href="/email/{{email.id}}/edit" class="btn btn-primary">Edit</a>
+                </div>
+                <div class="col-sm-3">
+                    <a href="/email/delete/{{email.id}}/" class="btn btn-primary">Delete</a>
+                </div>
+            </div>
+        </div>
+{% else %}
+    <div>No Email Details are present</div>
+{% endif %}
+</div>
+
+{% endblock %}

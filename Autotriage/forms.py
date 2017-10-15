@@ -7,7 +7,7 @@ from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth import get_user_model
 from django.utils import timezone
 
-from Autotriage.models import Employee, Company, CompanyServer, Branch, Contact
+from Autotriage.models import Employee, Company, CompanyServer, Branch, Contact, Email
 
 class AddEmployeeForm(forms.ModelForm):
     
@@ -40,5 +40,11 @@ class AddBranchForm(forms.ModelForm):
 class ContactForm(forms.ModelForm):
     class Meta:
         model = Contact
+        exclude = ('added_date',)
+
+
+class EmailForm(forms.ModelForm):
+    class Meta:
+        model = Email
         exclude = ('added_date',)
 

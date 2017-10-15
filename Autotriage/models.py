@@ -76,6 +76,21 @@ class CompanyServer(models.Model):
     deleted = models.IntegerField()
 
 
+class Email(models.Model):
+    email = models.EmailField(max_length=250,null=False,blank=False)
+    password = models.CharField(max_length=250, null=False, blank=False)
+    pop_server_name = models.CharField(max_length=200,null=False,blank=True)
+    pop_port = models.IntegerField(blank=False,null=False)
+    imap_server_name = models.CharField(max_length=200, null=False, blank=True)
+    imap_port = models.IntegerField(blank=False, null=False)
+    added_date = models.DateField(auto_now=True)
+    added_by = models.IntegerField()
+    deleted = models.IntegerField()
+    
+
+    
+
+
 
 
 

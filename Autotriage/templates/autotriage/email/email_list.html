@@ -1,0 +1,48 @@
+{% extends "autotriage/base.html" %}
+{% load static from staticfiles %}
+{% block app_title %}Email{% endblock %}
+{% block breadcrumb %}
+    <ol class="breadcrumb">
+        <li><a href=";">Email Management</a></li>
+        <li class='active'><a href="/email">Email</a></li>
+    </ol>
+{% endblock %}
+{% block app_body %}
+ <div class="row">
+    
+    {% if emails %}
+        <a href="/email/add" class="btn btn-primary">Add New Email</a>
+        <div class="col-sm-12 col-md-12 col-lg-12">
+            <div class="panel panel-default panel-member">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Email</th>
+                            <th>POP Server Name</th>
+                            <th>POP port</th>
+                            <th>IMAP Server Name</th>
+                            <th>IMAP port</th>
+                            <th>Added by</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for email in emails%}
+                                <tr>
+                                <td>{{email.email}}</td>
+                                <td>{{email.pop_server_name}}</td>
+                                <td>{{email.pop_port}}</td>
+                                <td>{{email.imap_server_name}}</td>
+                                <td>{{email.imap_port}}</td>
+                                <td>{{email.added_by}}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    {% else %}
+        <div>No Emails are listed</div>
+          <a href="/email/add" class="btn btn-primary">Add New Email</a>
+    {% endif %}
+    </div>
+{% endblock %}

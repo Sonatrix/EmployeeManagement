@@ -5,6 +5,7 @@ import Autotriage.views.company as companyViews
 import Autotriage.views.server as serverViews
 import Autotriage.views.branch as branchViews
 import Autotriage.views.contact as contactViews
+import Autotriage.views.email as emailViews
 from django.contrib.auth import views as auth_views
 
 app_name = 'autotriage'
@@ -79,6 +80,20 @@ urlpatterns += [
         contactViews.deleteContact, name='deleteContact'),
     url(r'^contact/(?P<contact_id>[0-9])/edit$',
         contactViews.editContact, name='editContact'),
+]
+
+#emails
+urlpatterns += [
+    url(r'^email/$',
+        emailViews.emailList, name='emailList'),
+    url(r'^email/add$',
+        emailViews.addEmail, name='emailAdd'),
+    url(r'^email/detail/(?P<id>[0-9])/$',
+        emailViews.emailDetail, name='emailDetail'),
+    url(r'^email/delete/(?P<id>[0-9])/$',
+        emailViews.deleteEmail, name='deleteEmail'),
+    url(r'^email/(?P<id>[0-9])/edit$',
+        emailViews.editEmail, name='editEmail'),
 ]
 
 #login views
