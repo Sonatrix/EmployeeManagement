@@ -15,7 +15,7 @@ class AddEmployeeForm(forms.ModelForm):
         model = Employee
         include = ('username', 'password', 
             'designation','email','first_name', 'is_staff', 'profile_pic')
-        exclude = ('deleted', 'inserted_by','groups','user_permissions','date_joined','last_login')
+        exclude = ('deleted', 'inserted_by','groups','profile_pic','user_permissions','date_joined','last_login')
 
 
 class AddCompanyForm(forms.ModelForm):
