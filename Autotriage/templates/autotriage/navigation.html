@@ -1,122 +1,66 @@
 {% load static from staticfiles %}
-<header>
-    <nav class="navbar navbar-default navbar-static-top no-margin" role="navigation">
-        <div class="navbar-brand-group">
-            <a class="navbar-sidebar-toggle navbar-link" data-sidebar-toggle>
-                <i class="fa fa-lg fa-fw fa-bars"></i>
-            </a>
-            <a class="navbar-brand hidden-xxs" href="/">
-                <span class="sc-visible">
-                    I
-                </span>
-                <span class="sc-hidden">
-                    <span class="semi-bold">Employee</span>
-                </span>
-            </a>
-        </div>
-        <ul class="nav navbar-nav navbar-nav-expanded pull-right margin-md-right" >
-           <!-- <li class="hidden-xs">
-                <form class="navbar-form">
-                    <div class="navbar-search">
-                        <input type="text" placeholder="Search &hellip;" class="form-control">
-                        <button class="btn" type="submit"><i class="fa fa-search"></i></button>
-                    </div>
-                </form>
-            </li> -->
+ {% if user.is_authenticated %}
 
-            <li class="dropdown">
-                <a data-toggle="dropdown" class="dropdown-toggle navbar-user" href="javascript:;">
-                    <img class="img-circle" src="{% static 'autotriage/demo/images/profile.jpg' %}">
-                    <span class="hidden-xs">
-                        {% if user.is_authenticated %} 
-                            {{user.username}} 
-                        {% else %}
-                            Login
-                        {% endif %}
-                        </span>
-                    <b class="caret"></b>
+<aside class="sidebar sidebar-default" >
+    <div class="sidebar-profile">
+        <img class="img-circle profile-image" src="{% static 'autotriage/demo/images/profile.jpg' %}">
+
+        <div class="profile-body">
+            {% if user.is_superuser %}
+                <h4>Admin</h4>
+            {% else %}
+                <h4>{{user.username }}</h4>
+            {% endif %}
+
+            <div class="sidebar-user-links">
+                <a class="btn btn-link btn-xs" href="/employee/{{user.id}}" data-placement="bottom" data-toggle="tooltip" data-original-title="Profile"><i class="fa fa-user"></i></a>
+                <a class="btn btn-link btn-xs" href="/logout" data-placement="bottom" data-toggle="tooltip" data-original-title="Logout"><i class="fa fa-sign-out"></i></a>
+            </div>
+        </div>
+    </div>
+    <nav >
+        <h5 class="sidebar-header">Navigation</h5>
+        <ul class="nav nav-pills nav-stacked">
+            <li class="nav-dropdown">
+                <a href="#" title="Employee">
+                    <i class="fa fa-lg fa-fw fa-user"></i> Employee
                 </a>
-                <ul class="dropdown-menu pull-right-xs">
-                    {% if user.is_authenticated %}
-                        <li class="arrow"></li>
-                        <li><a href="/employee/{{user.id}}">Profile</a></li>
-                        <li class="divider"></li>
-                        <li><a href="/logout">Log Out</a></li>
-                    {% else %}
-                        <li class="divider"></li>
-                        <li><a href="/login">Login</a></li>
+                <ul class="nav-sub">
+                    <li>
+                        <a href="/employee_list" title="Members">
+                            <i class="fa fa-fw fa-caret-right"></i> Dashboard
+                        </a>
+                    </li>
+                    {% if user.is_superuser %}
+                        <li>
+                            <a href="/employee_add" title="Add Employee">
+                                <i class="fa fa-fw fa-caret-right"></i> Add Employee
+                            </a>
+                        </li>
                     {% endif %}
                 </ul>
             </li>
+            {% if user.is_superuser %}
+                <li class="nav-dropdown">
+                    <a href="#" title="Company">
+                        <i class="fa fa-lg fa-fw fa-shopping-cart"></i> Company
+                        <!-- <span class="label label-danger pull-right">New</span> -->
+                    </a>
+                    <ul class="nav-sub">
+                        <li>
+                            <a href="/company_list" title="Company Management">
+                                <i class="fa fa-fw fa-caret-right"></i> Company Management
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            {% endif %}
         </ul>
     </nav>
-</header>
- {% if user.is_authenticated %}
- <div class="page-wrapper">
-            <aside class="sidebar sidebar-default" >
-                <div class="sidebar-profile">
-                    <img class="img-circle profile-image" src="{% static 'autotriage/demo/images/profile.jpg' %}">
+</aside>
 
-                    <div class="profile-body">
-                        {% if user.is_superuser %}
-                            <h4>Admin</h4>
-                        {% else %}
-                            <h4>{{user.username }}</h4>
-                        {% endif %}
 
-                        <div class="sidebar-user-links">
-                            <a class="btn btn-link btn-xs" href="/employee/{{user.id}}" data-placement="bottom" data-toggle="tooltip" data-original-title="Profile"><i class="fa fa-user"></i></a>
-                            <a class="btn btn-link btn-xs" href="/logout" data-placement="bottom" data-toggle="tooltip" data-original-title="Logout"><i class="fa fa-sign-out"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <nav >
-                    <h5 class="sidebar-header">Navigation</h5>
-                    <ul class="nav nav-pills nav-stacked">
-                        <li class="nav-dropdown">
-                            <a href="#" title="Employee">
-                                <i class="fa fa-lg fa-fw fa-user"></i> Employee
-                            </a>
-                            <ul class="nav-sub">
-                                <li>
-                                    <a href="/employee_list" title="Members">
-                                        <i class="fa fa-fw fa-caret-right"></i> Dashboard
-                                    </a>
-                                </li>
-                                {% if user.is_superuser %}
-                                    <li>
-                                        <a href="/employee_add" title="Add Employee">
-                                            <i class="fa fa-fw fa-caret-right"></i> Add Employee
-                                        </a>
-                                    </li>
-                                {% endif %}
-                            </ul>
-                        </li>
-                        {% if user.is_superuser %}
-                            <li class="nav-dropdown">
-                                <a href="#" title="Company">
-                                    <i class="fa fa-lg fa-fw fa-shopping-cart"></i> Company
-                                    <!-- <span class="label label-danger pull-right">New</span> -->
-                                </a>
-                                <ul class="nav-sub">
-                                    <li>
-                                        <a href="/company_list" title="Company Management">
-                                            <i class="fa fa-fw fa-caret-right"></i> Company Management
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-                        {% endif %}
-                    </ul>
-                </nav>
-            </aside>
+    
 
-            <div class="page-content">
-                <div class="page-subheading page-subheading-md">
-                
-                    <ol class="breadcrumb">
-                        <li class="active"><a href="javascript:;">Dashboard</a></li>
-                    </ol>
-</div>
 
 {% endif %}

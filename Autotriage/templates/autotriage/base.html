@@ -33,7 +33,15 @@
 <body>
 
     <div class="fluid-container">
-        {% include "autotriage/navigation.html" %}
+        {% include "autotriage/header.html" %}
+        <div class="page-wrapper">
+            {% include "autotriage/navigation.html" %}
+            <div class="page-content">
+            <div class="page-subheading page-subheading-md">
+                {% block breadcrumb %}{% endblock %}
+        </div>
+        
+
         <div class="container-fluid-md">
             {% block app_body %}{% endblock %}
         </div>

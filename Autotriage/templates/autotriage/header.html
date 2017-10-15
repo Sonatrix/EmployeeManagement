@@ -1,0 +1,53 @@
+{% load static from staticfiles %}
+<header>
+    <nav class="navbar navbar-default navbar-static-top no-margin" role="navigation">
+        <div class="navbar-brand-group">
+            <a class="navbar-sidebar-toggle navbar-link" data-sidebar-toggle>
+                <i class="fa fa-lg fa-fw fa-bars"></i>
+            </a>
+            <a class="navbar-brand hidden-xxs" href="/">
+                <span class="sc-visible">
+                    I
+                </span>
+                <span class="sc-hidden">
+                    <span class="semi-bold">Employee</span>
+                </span>
+            </a>
+        </div>
+        <ul class="nav navbar-nav navbar-nav-expanded pull-right margin-md-right" >
+           <!-- <li class="hidden-xs">
+                <form class="navbar-form">
+                    <div class="navbar-search">
+                        <input type="text" placeholder="Search &hellip;" class="form-control">
+                        <button class="btn" type="submit"><i class="fa fa-search"></i></button>
+                    </div>
+                </form>
+            </li> -->
+
+            <li class="dropdown">
+                <a data-toggle="dropdown" class="dropdown-toggle navbar-user" href="javascript:;">
+                    <img class="img-circle" src="{% static 'autotriage/demo/images/profile.jpg' %}">
+                    <span class="hidden-xs">
+                        {% if user.is_authenticated %} 
+                            {{user.username}} 
+                        {% else %}
+                            Login
+                        {% endif %}
+                        </span>
+                    <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu pull-right-xs">
+                    {% if user.is_authenticated %}
+                        <li class="arrow"></li>
+                        <li><a href="/employee/{{user.id}}">Profile</a></li>
+                        <li class="divider"></li>
+                        <li><a href="/logout">Log Out</a></li>
+                    {% else %}
+                        <li class="divider"></li>
+                        <li><a href="/login">Login</a></li>
+                    {% endif %}
+                </ul>
+            </li>
+        </ul>
+    </nav>
+</header>

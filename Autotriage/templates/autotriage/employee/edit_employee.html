@@ -1,7 +1,14 @@
 {% extends "autotriage/base.html" %}
 {% load static from staticfiles %}
 {% block app_title %}Edit Employee{% endblock %}
-
+{% block breadcrumb %}
+    <ol class="breadcrumb">
+        <li><a href="/">Dashboard</a></li>
+        <li><a href="/employee_list">Employees</a></li>
+        <li><a href="/employee/{{employee_id}}">Employee</a></li>
+        <li class="active"><a href="/employee_edit/{{employee_id}}">Edit</a></li>
+    </ol>
+{% endblock %}
 {% block app_body %}
 <div class="col-xs-6">
 <div class="panel panel-default">
