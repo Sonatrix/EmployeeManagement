@@ -1,15 +1,16 @@
 from django import forms
+from django.contrib.auth.forms import UserCreationForm
 from django.utils import timezone
 from Autotriage.models import Employee , Company, CompanyServer, Branch, Contact, Email
 
 
-class AddEmployeeForm(forms.ModelForm):
+class AddEmployeeForm(UserCreationForm):
     
     class Meta():
         model = Employee
-        include = ('username', 'password', 
+        include = ('username', 
                    'designation', 'email', 'first_name', 'is_staff', 'is_active')
-        exclude = ('deleted','inserted_by','groups',
+        exclude = ('deleted', 'inserted_by', 'groups', 'password',
                    'profile_pic', 'user_permissions', 'date_joined', 'last_login')
 
 
