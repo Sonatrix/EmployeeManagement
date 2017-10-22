@@ -24,7 +24,9 @@ def addEmployee(request):
         form = AddEmployeeForm(request.POST, request.FILES)
         # check whether it's valid:
         if form.is_valid():
-            form.save()
+            employeeData = form.save(commit=False)
+            employeeData.inserted_by = request.user.id
+            employeeData.save()
             return HttpResponseRedirect('/employee_list/')
 
     # if a GET (or any other method) we'll create a blank form
@@ -46,7 +48,8 @@ def deleteEmployee(request, employee_id):
     
     employee = Employee.objects.get(id=employee_id)
     if employee:
-        employee.delete()
+        employee.is_active = 0 
+        employee.save()
     return HttpResponseRedirect('/employee_list/')
 
 

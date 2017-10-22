@@ -1,5 +1,6 @@
 {% extends "autotriage/base.html" %}
 {% load static from staticfiles %}
+{% load bootstrap %}
 {% block app_title %}Edit Email Details{% endblock %}
 {% block breadcrumb %}
     <ol class="breadcrumb">
@@ -11,11 +12,13 @@
 {% block app_body %}
 <div class="col-xs-6">
 <div class="panel panel-default">
-
+<div class="panel-heading">
+    <h3>Edit Email Details</h3>
+</div>
 <div class="panel-body">
     <form method='post' action='/email/{{id}}/edit'>
     <fieldset>
-        {{ form.as_p }}
+        {{ form|bootstrap_horizontal:'col-lg-4' }}
         <div class='buttons form-group'>
             <input type='submit' class="btn btn-primary" value="Save Changes" />
         </div>

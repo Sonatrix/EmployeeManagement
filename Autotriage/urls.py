@@ -1,4 +1,4 @@
-from django.conf.urls import url
+from django.conf.urls import url, handler404, handler500
 import Autotriage.views.views as publicViews
 import Autotriage.views.employee as employeeViews
 import Autotriage.views.company as companyViews
@@ -8,7 +8,10 @@ import Autotriage.views.contact as contactViews
 import Autotriage.views.email as emailViews
 from django.contrib.auth import views as auth_views
 
-app_name = 'autotriage'
+app_name = 'Autotriage'
+
+handler404 = 'publicViews.handler404'
+handler500 = 'publicViews.handler404'
 
 urlpatterns = [
     url(r'^$', publicViews.home, name='home'),
@@ -101,3 +104,4 @@ urlpatterns += [
     url(r'^login/$', auth_views.login, {'template_name': 'autotriage/registration/login.html'}, name='login'),
     url(r'^logout/$', auth_views.logout, {'template_name': 'autotriage/registration/logged_out.html'}, name='logout'),
 ]
+

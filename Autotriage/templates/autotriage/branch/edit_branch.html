@@ -1,5 +1,6 @@
 {% extends "autotriage/base.html" %}
 {% load static from staticfiles %}
+{% load bootstrap %}
 {% block app_title %}Edit Branch{% endblock %}
 {% block breadcrumb %}
     <ol class="breadcrumb">
@@ -18,7 +19,7 @@
 <div class="panel-body">
     <form method='post' action='/company/{{company_id}}/edit/{{branch_id}}'>
     <fieldset>
-        {{ form.as_p }}
+        {{ form|bootstrap_horizontal:'col-lg-4' }}
         <div class='buttons form-group'>
             <input type='submit' class="btn btn-primary" value="Save Changes" />
         </div>

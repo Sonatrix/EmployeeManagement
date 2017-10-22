@@ -12,6 +12,9 @@ if __name__ == "__main__":
         # exceptions on Python 2.
         try:
             import django
+            import django.contrib
+            import django.contrib.admin.apps
+            import Autotriage
         except ImportError:
             raise ImportError(
                 "Couldn't import Django. Are you sure it's installed and "
