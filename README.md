@@ -1,5 +1,5 @@
-# EmployeeManagement
-Autotriage is company management program.
+# Employee Management
+Autotriage is company management system.Suppose we have multiple clients, branches,and their contacts.So we want to manage them under a common platform.So we can use this to maintain the system
 
 
 # Requirements
@@ -11,7 +11,7 @@ https://stackoverflow.com/questions/25865270/how-to-install-python-mysqldb-modul
 # Django bootstrap form
 https://django-bootstrap-form.readthedocs.io/en/latest/
 
-      4. Python3 need to be installed
+    Python3 need to be installed
 
 
 # Steps
