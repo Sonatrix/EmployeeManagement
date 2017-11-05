@@ -17,10 +17,12 @@ from django.conf.urls import url, include
 from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.static import static
+import Autotriage.views as error_view 
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'', include('Autotriage.urls'))
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
-
+handler404 = 'Autotriage.views.views.handler404'
+handler500 = 'Autotriage.views.views.handler500'
