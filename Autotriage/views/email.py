@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.core.exceptions import ObjectDoesNotExist
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect, HttpResponse
@@ -38,14 +38,14 @@ def addEmail(request):
 
 def emailDetail(request,id):
 
-    email = Email.objects.get(id=id)
+    email = get_object_or_404(Email, id=id)
     return render(request, 'autotriage/email/email_details.html', {'email': email, 'id': id})
 
 
 @login_required
 def deleteEmail(request,id):
 
-    email = Email.objects.get(id=id)
+    email = get_object_or_404(Email, id=id)
     if email:
         email.delete()
     return HttpResponseRedirect('/email/')
@@ -54,7 +54,7 @@ def deleteEmail(request,id):
 @login_required
 def editEmail(request, id):
      # if this is a POST request we need to process the form data
-    email = Email.objects.get(id=id)
+    email = get_object_or_404(Email, id=id)
     if request.method == 'POST':
         # create a form instance and populate it with data from the request:
         form = EmailForm(request.POST, instance=email)

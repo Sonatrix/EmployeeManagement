@@ -67,7 +67,7 @@ TEMPLATES = [
             ],
             'libraries': {  # Adding this section should work around the issue.
                 'staticfiles': 'django.templatetags.static',
-                'i18n': 'django.templatetags.i18n',
+                'i18n': 'django.templatetags.i18n'
             },
         }
     },

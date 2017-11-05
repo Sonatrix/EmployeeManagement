@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.core.exceptions import ObjectDoesNotExist
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect, HttpResponse
@@ -36,13 +36,13 @@ def addCompany(request):
 
 def companyDetail(request, pid):
 
-    company = Company.objects.get(id=pid)
+    company = get_object_or_404(Company, id=pid)
     return render(request, 'autotriage/company/company_details.html', {'company': company})
 
 @login_required
 def deleteCompany(request, pid):
 
-    company = Company.objects.get(id=pid)
+    company = get_object_or_404(Company, id=pid)
     if company:
         company.delete()
     return HttpResponseRedirect('/company_list/')
@@ -51,7 +51,7 @@ def deleteCompany(request, pid):
 @login_required
 def editCompany(request, pid):
      # if this is a POST request we need to process the form data
-    company = Company.objects.get(id=pid)
+    company = get_object_or_404(Company, id=pid)
     if request.method == 'POST':
         # create a form instance and populate it with data from the request:
         form = AddCompanyForm(request.POST, instance=company)

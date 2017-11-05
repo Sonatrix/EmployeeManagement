@@ -1,4 +1,4 @@
-from django.conf.urls import url, handler404, handler500
+from django.conf.urls import url
 import Autotriage.views.views as publicViews
 import Autotriage.views.employee as employeeViews
 import Autotriage.views.company as companyViews
@@ -9,9 +9,6 @@ import Autotriage.views.email as emailViews
 from django.contrib.auth import views as auth_views
 
 app_name = 'Autotriage'
-
-handler404 = 'publicViews.handler404'
-handler500 = 'publicViews.handler404'
 
 urlpatterns = [
     url(r'^$', publicViews.home, name='home'),

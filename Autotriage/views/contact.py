@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.core.exceptions import ObjectDoesNotExist
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect, HttpResponse
@@ -39,14 +39,14 @@ def addContact(request, branch_id):
 
 def contactDetail(request, contact_id):
 
-    contact = Contact.objects.get(id=contact_id)
+    contact = get_object_or_404(Contact, id=contact_id)
     return render(request, 'autotriage/contact/contact_details.html', {'contact': contact,'contact_id':contact_id})
 
 
 @login_required
 def deleteContact(request, branch_id, contact_id):
 
-    contact = Contact.objects.get(id=contact_id)
+    contact = get_object_or_404(Contact, id=contact_id)
     if contact:
         contact.delete()
     return HttpResponseRedirect('/contact/' + str(branch_id))
@@ -55,7 +55,7 @@ def deleteContact(request, branch_id, contact_id):
 @login_required
 def editContact(request, contact_id):
      # if this is a POST request we need to process the form data
-    contact = Contact.objects.get(id=contact_id)
+    contact = get_object_or_404(Contact, id=contact_id)
     if request.method == 'POST':
         # create a form instance and populate it with data from the request:
         form = ContactForm(request.POST, instance=contact)

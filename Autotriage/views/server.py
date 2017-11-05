@@ -38,14 +38,14 @@ def addServer(request, branch_id):
 
 def serverDetail(request, server_id):
 
-    server = CompanyServer.objects.get(id=server_id)
+    server = get_object_or_404(CompanyServer, id=server_id)
     return render(request, 'autotriage/server/server_details.html', {'server': server})
 
 
 @login_required
 def deleteServer(request, pid):
 
-    server = CompanyServer.objects.get(id=pid)
+    server = get_object_or_404(CompanyServer, id=pid)
     if server:
         server.delete()
     return HttpResponseRedirect('/server_list/')
@@ -54,7 +54,7 @@ def deleteServer(request, pid):
 @login_required
 def editServer(request, pid):
      # if this is a POST request we need to process the form data
-    server = CompanyServer.objects.get(id=pid)
+    server = get_object_or_404(CompanyServer, id=pid)
     if request.method == 'POST':
         # create a form instance and populate it with data from the request:
         form = AddServerForm(request.POST, instance=server)

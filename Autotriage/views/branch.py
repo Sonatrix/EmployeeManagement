@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.core.exceptions import ObjectDoesNotExist
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect, HttpResponse
@@ -39,14 +39,14 @@ def addBranch(request, company_id):
 
 def branchDetail(request, company_id, branch_id):
 
-    branch = Branch.objects.get(id=branch_id)
+    branch = get_object_or_404(Branch, id=branch_id)
     return render(request, 'autotriage/branch/branch_details.html', {'branch': branch, 'company_id': company_id})
 
 
 @login_required
 def deleteBranch(request, company_id, branch_id):
 
-    branch = Branch.objects.get(id=branch_id)
+    branch = get_object_or_404(Branch, id=branch_id)
     if branch:
         branch.delete()
     return HttpResponseRedirect('/company/'+str(company_id))
@@ -55,7 +55,7 @@ def deleteBranch(request, company_id, branch_id):
 @login_required
 def editBranch(request, company_id, branch_id):
      # if this is a POST request we need to process the form data
-    branch = Branch.objects.get(id=branch_id)
+    branch = get_object_or_404(Branch, id=branch_id)
     if request.method == 'POST':
         # create a form instance and populate it with data from the request:
         form = AddBranchForm(request.POST, instance=branch)
