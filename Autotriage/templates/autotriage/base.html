@@ -30,17 +30,18 @@
 
 </head>
 
-<body>
+<body style="background:#6495ed">
 
     <div class="fluid-container">
+     {% if request.user.is_authenticated %}
         {% include "autotriage/header.html" %}
-        <div class="page-wrapper">
-            {% include "autotriage/navigation.html" %}
-            <div class="page-content">
-            <div class="page-subheading page-subheading-md">
-                {% block breadcrumb %}{% endblock %}
-        </div>
-        
+            <div class="page-wrapper">
+                {% include "autotriage/navigation.html" %}
+                <div class="page-content">
+                <div class="page-subheading page-subheading-md">
+                    {% block breadcrumb %}{% endblock %}
+            </div>
+        {% endif %}
 
         <div class="container-fluid-md">
             {% block app_body %}{% endblock %}

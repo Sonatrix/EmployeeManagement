@@ -7,32 +7,36 @@
     <meta http-equiv="REFRESH" content="0;url={% url '/' %}">
 {% else %}
 
-    <div class="col-md-4 col-md-offset-4">
-        <div class="login-panel panel panel-default">
-            <div class="panel-heading">
-                <h3 class="panel-title">Please Sign In</h3>
-            </div>
+    <div class="col-md-4 col-md-offset-4 body-sign-in">
+        <div class="panel panel-default form-container">
             <div class="panel-body">
                 <form role="form" method='post' action='./'>
-                {% if form.errors %}
-                <div class="alert alert-danger">Your username and password didn't match. Please try again.</div>
-                {% endif %}
-                    <fieldset>
-                        <div class="form-group">
-                            <input class="form-control" placeholder="Username" name="username" type="text" autofocus>
+                    <h3 class="text-center margin-xl-bottom">Welcome Back!</h3>
+                    {% if form.errors %}
+                    <div class="alert alert-danger">Your username and password didn't match. Please try again.</div>
+                    {% endif %}
+                        <div class="form-group text-center">
+                            <label class="sr-only" for="username">Username</label>
+                            <input type="text" class="form-control input-lg" id="username" name="username" placeholder="Username" autofocus>
                         </div>
-                        <div class="form-group">
-                            <input class="form-control" placeholder="Password" name="password" type="password" value="">
+                        <div class="form-group text-center">
+                            <label class="sr-only" for="password">Password</label>
+                            <input type="password" class="form-control input-lg" id="password" name="password" placeholder="Password" value="">
                         </div>
-                        <div class="checkbox">
+                            <div class="checkbox">
                             <label>
                                 <input name="remember" type="checkbox" value="Remember Me">Remember Me
                             </label>
                         </div>
                         <input class="btn btn-lg btn-success btn-block" type='submit' value="Login" />
                         <input type="hidden" name="next" value="{% if next %}{{ next }}{% else %}../{% endif %}" />
-                    </fieldset>
-                {% csrf_token %}</form>
+                    {% csrf_token %}
+                </form>
+            </div>
+            <div class="panel-body text-center">
+                <div class="margin-bottom">
+                    For any login related queries, contact system administrator.
+                </div>
             </div>
         </div>
     </div>

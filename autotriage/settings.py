@@ -130,10 +130,10 @@ LANGUAGES_BIDI = ["he", "ar", "fa", "ur"]
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "static"),
-    '/Autotriage/static/',
-]
+# STATICFILES_DIRS = [
+#     os.path.join(BASE_DIR, "static"),
+#     '/Autotriage/static/',
+# ]
 
 LOGIN_REDIRECT_URL = '/'
 LOGIN_URL = '/login'

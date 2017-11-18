@@ -22,7 +22,8 @@ import Autotriage.views as error_view
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'', include('Autotriage.urls'))
-] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+] 
+#+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 handler404 = 'Autotriage.views.views.handler404'
 handler500 = 'Autotriage.views.views.handler500'

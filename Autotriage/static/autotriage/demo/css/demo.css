@@ -1,3 +1,19 @@
+html {
+    overflow-x: hidden;
+}
+
+body {
+    background: #6495ed;
+    font-family: "Roboto", sans-serif;
+}
+
+ol,
+ul {
+    list-style: outside none none;
+    margin: 0;
+    padding: 0;
+}
+
 .col-button-colors .btn,
 .col-button-icons .btn {
     min-width: 100px;
@@ -18,7 +34,7 @@
     margin-top: 10px;
 }
 
-.btn-block + .btn-block {
+.btn-block+.btn-block {
     margin-top: 8px;
 }
 
@@ -90,4 +106,8 @@
     #navbar-buy-theme {
         display: none;
     }
+}
+
+.body-sign-in {
+    margin-top: 120px;
 }
