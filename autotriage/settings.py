@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'ksa@1b0^d2%s(7gj3(+dccem(nh!k8y^)n)(df@e$tb*h_1h*9'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
@@ -130,10 +130,10 @@ LANGUAGES_BIDI = ["he", "ar", "fa", "ur"]
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATIC_URL = '/static/'
-# STATICFILES_DIRS = [
-#     os.path.join(BASE_DIR, "static"),
-#     '/Autotriage/static/',
-# ]
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static"),
+    '/Autotriage/static/',
+]
 
 LOGIN_REDIRECT_URL = '/'
 LOGIN_URL = '/login'

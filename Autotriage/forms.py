@@ -9,9 +9,9 @@ class AddEmployeeForm(UserCreationForm):
     class Meta():
         model = Employee
         include = ('username', 
-                   'designation', 'email', 'first_name', 'is_staff', 'is_active')
+                   'designation', 'email', 'first_name', 'is_staff', 'is_active', 'profile_pic')
         exclude = ('deleted', 'inserted_by', 'groups', 'password',
-                   'profile_pic', 'user_permissions', 'date_joined', 'last_login')
+                    'user_permissions', 'date_joined', 'last_login')
 
 
 class AddCompanyForm(forms.ModelForm):

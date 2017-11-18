@@ -8,6 +8,7 @@ from Autotriage.models import CompanyServer
 
 
 def serverList(request, branch_id):
+    
     servers = CompanyServer.objects.filter(branch_id=branch_id)
     return render(request,
                   'autotriage/server/server_list.html',
@@ -15,7 +16,18 @@ def serverList(request, branch_id):
                       'servers': servers,
                       'branch_id': branch_id
                   }
-                  )
+                )
+
+
+def servers(request):
+
+    server = CompanyServer.objects.all()
+    return render(request,
+                  'autotriage/server/server_list.html',
+                  {
+                      'servers': server
+                  }
+                )
 
 
 @login_required
@@ -34,6 +46,24 @@ def addServer(request, branch_id):
         form = AddServerForm()
 
     return render(request, 'autotriage/server/add_server.html', {'form': form, 'branch_id': branch_id})
+
+
+@login_required
+def addServerDirect(request):
+     # if this is a POST request we need to process the form data
+    if request.method == 'POST':
+        # create a form instance and populate it with data from the request:
+        form = AddServerForm(request.POST)
+        # check whether it's valid:
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect('/servers/')
+
+    # if a GET (or any other method) we'll create a blank form
+    else:
+        form = AddServerForm()
+
+    return render(request, 'autotriage/server/add_server.html', {'form': form})
 
 
 def serverDetail(request, server_id):
