@@ -82,9 +82,9 @@ def deleteServer(request, pid):
 
 
 @login_required
-def editServer(request, pid):
+def editServer(request, branch_id, server_id):
      # if this is a POST request we need to process the form data
-    server = get_object_or_404(CompanyServer, id=pid)
+    server = get_object_or_404(CompanyServer, id=server_id)
     if request.method == 'POST':
         # create a form instance and populate it with data from the request:
         form = AddServerForm(request.POST, instance=server)
@@ -97,4 +97,4 @@ def editServer(request, pid):
     else:
         form = AddServerForm(instance=server)
 
-    return render(request, 'autotriage/server/edit_server.html', {'form': form, 'pid': pid,'server':server})
+    return render(request, 'autotriage/server/edit_server.html', {'form': form, 'pid': server_id,'server':server})
