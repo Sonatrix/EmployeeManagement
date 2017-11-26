@@ -6,6 +6,174 @@
     </ol>
 {% endblock %}
 {% block app_body %}
-
+<div class="row">
+    <div class="col-sm-6 col-lg-3">
+        <div class="panel panel-metric panel-metric-sm">
+            <div class="panel-body panel-body-primary">
+                <div class="metric-content metric-icon">
+                    <div class="value">
+                        73
+                    </div>
+                    <div class="icon">
+                        <i class="fa fa-bell"></i>
+                    </div>
+                    <header>
+                        <h3 class="thin">Today's Alerts</h3>
+                    </header>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6 col-lg-3">
+        <div class="panel panel-metric panel-metric-sm">
+            <div class="panel-body panel-body-success">
+                <div class="metric-content metric-icon">
+                    <div class="value">
+                        16
+                    </div>
+                    <div class="icon">
+                        <i class="fa fa-check"></i>
+                    </div>
+                    <header>
+                        <h3 class="thin">Actionable Alerts</h3>
+                    </header>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6 col-lg-3">
+        <div class="panel panel-metric panel-metric-sm">
+            <div class="panel-body panel-body-inverse">
+                <div class="metric-content metric-icon">
+                    <div class="value">
+                        3.1%
+                    </div>
+                    <div class="icon">
+                        <i class="fa fa-chain-broken"></i>
+                    </div>
+                    <header>
+                        <h3 class="thin">Action Failure</h3>
+                    </header>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6 col-lg-3">
+        <div class="panel panel-metric panel-metric-sm">
+            <div class="panel-body panel-body-danger">
+                <div class="metric-content metric-icon">
+                    <div class="value">
+                        3:17
+                    </div>
+                    <div class="icon">
+                        <i class="fa fa-clock-o"></i>
+                    </div>
+                    <header>
+                        <h3 class="thin">Avg. Action Time</h3>
+                    </header>
+                </div>
+            </div>
+        </div>
+    </div>
+ </div>
+   
+<div class="row">
+    <div class="col-sm-9 col-lg-9">
+        <div class="panel" style="overflow: hidden">
+            <div class="table-responsive">
+                <table id="table-basic" class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Server</th>
+                            <th>Message ID</th>
+                            <th>Date</th>
+                        
+                            <th>Type</th>
+                            <th>Status</th>
+                            <th>&nbsp;</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><a href="AdminAcc/serverDashboard.aspx">192.142.178</a></td>
+                            <td><a href="#">65571981</a></td>
+                            <td>08/15/2014 12:14</td>
+                            <td>InComing Alert</td>
+                            <td>
+                                <span class="label label-info">Data Processed</span>
+                            </td>
+                            <td>
+                                <div class="btn-group">
+                                    <a class="dropdown-toggle btn btn-link btn-link-dark no-padding" data-toggle="dropdown">
+                                        <i class="fa fa-cog"></i>
+                                    </a>
+                                    <ul class="dropdown-menu pull-right" role="menu">
+                                        <li><a href="#">Details</a></li>
+                                    </ul>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><a href="AdminAcc/serverDashboard.aspx">192.141.51</a></td>
+                            <td><a href="#">65571981</a></td>
+                            <td>08/06/2014 12:14</td>
+                            <td>CPU Usage</td>
+                            <td>
+                                <span class="label label-danger">Failed</span>
+                            </td>
+                            <td>
+                                <div class="btn-group">
+                                    <a class="dropdown-toggle btn btn-link btn-link-dark no-padding" data-toggle="dropdown">
+                                        <i class="fa fa-cog"></i>
+                                    </a>
+                                    <ul class="dropdown-menu pull-right" role="menu">
+                                        <li><a href="#">Details</a></li> 
+                                    </ul>
+                                </div>
+                            </td>
+                        </tr>
+                    <tfoot>
+                        <tr>
+                            <th>Server</th>
+                            <th>Message ID</th>
+                            <th>Date</th>
+                            <th>Type</th>
+                        
+                            <th>Status</th>
+                            <th>&nbsp;</th>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div> 
+    </div> 
+    <div class="col-sm-3 col-lg-3">
+        <div class="panel" style="overflow: hidden">
+            <div class="panel-body">
+                <h4 class="thin no-margin-top">Server List</h4>
+                    <table class="table">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <a href="AdminAcc/serverDashboard.aspx" class="text-success semi-bold">192.149.52</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <a href="AdminAcc/serverDashboard.aspx" class="text-success semi-bold">192.149.53</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <a href="AdminAcc/serverDashboard.aspx" class="text-success semi-bold">192.149.54</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div> 
+        </div> 
+    </div> 
+</div>
 
 {% endblock %}

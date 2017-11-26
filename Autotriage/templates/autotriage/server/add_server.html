@@ -18,7 +18,11 @@
             </div>
             <!-- /.panel-heading -->
             <div class="panel-body">
-                <form method='POST' action='/server_add' enctype='multipart/form-data'>
+                {% if branch_id %}
+                    <form method='POST' action='/server/{{branch_id}}/add' enctype='multipart/form-data'>
+                {% else %}
+                    <form method='POST' action='/server/add' enctype='multipart/form-data'>
+                {% endif %}
                     <fieldset class='col-xs-8'>
                         {{ form|bootstrap_horizontal:'col-lg-4' }}
 

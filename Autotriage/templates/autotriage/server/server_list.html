@@ -14,7 +14,7 @@
     
     {% if servers %}
       {% if branch_id %}
-          <a href="/server_add/{{branch_id}}/add" class="btn btn-primary">Add New Server</a>
+          <a href="/server/{{branch_id}}/add" class="btn btn-primary">Add New Server</a>
       {% else %}
           <a href="/server/add" class="btn btn-primary">Add New Server</a>
       {% endif %}
@@ -36,7 +36,7 @@
     {% else %}
         <div>No servers are listed</div>
           {% if branch_id %}
-            <a href="/server_add/{{branch_id}}/add" class="btn btn-primary">Add New Server</a>
+            <a href="/server/{{branch_id}}/add" class="btn btn-primary">Add New Server</a>
           {% else %}
             <a href="/server/add" class="btn btn-primary">Add New Server</a>
           {% endif %}

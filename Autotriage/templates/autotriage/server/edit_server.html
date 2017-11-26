@@ -16,7 +16,7 @@
     <h3>Edit Server Details</h3>
 </div>
 <div class="panel-body">
-    <form method='post' action='/server_edit/{{pid}}'>
+    <form method='post' action='/server/{{server.branch}}/edit/{{pid}}'>
     <fieldset>
         {{ form|bootstrap_horizontal:'col-lg-4' }}
         <div class='buttons form-group'>

@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.core.exceptions import ObjectDoesNotExist
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect, HttpResponse
@@ -66,7 +66,7 @@ def addServerDirect(request):
     return render(request, 'autotriage/server/add_server.html', {'form': form})
 
 
-def serverDetail(request, server_id):
+def serverDetail(request, branch_id, server_id):
 
     server = get_object_or_404(CompanyServer, id=server_id)
     return render(request, 'autotriage/server/server_details.html', {'server': server})
@@ -97,4 +97,4 @@ def editServer(request, pid):
     else:
         form = AddServerForm(instance=server)
 
-    return render(request, 'autotriage/server/edit_server.html', {'form': form, 'pid': pid})
+    return render(request, 'autotriage/server/edit_server.html', {'form': form, 'pid': pid,'server':server})

@@ -72,8 +72,8 @@ class CompanyServer(models.Model):
     escalate_to_email1 = models.EmailField(max_length=100)
     escalate_to_email2 = models.EmailField(max_length=100, blank=True)
     added_date = models.DateField(auto_now=True)
-    added_by = models.IntegerField()
-    deleted = models.IntegerField()
+    added_by = models.IntegerField(blank=True)
+    deleted = models.IntegerField(blank=True,null=True)
 
 
 class Email(models.Model):
